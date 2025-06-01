@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mesmerica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ::selection {
+      background: #fff;
+      color: #000;
+    }
+
+    body {
+      background-color: #000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      gap: 2rem;
+    }
+
+    .glassContainer {
+      width: 90%;
+      max-width: 500px;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+      will-change: transform, opacity;
+      opacity: 1;
+    }
+
+    .glassContainer.hidden {
+      opacity: 0;
+    }
+
+    .helloText {
+      color: #f5f5f5;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .titleText {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .bodyText {
+      color: #e0e0e0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .buttonContainer {
+      width: 90%;
+      max-width: 500px;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .buttonContainer:hover {
+      transform: scale(1.05);
+    }
+
+    .navButton {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      background-color: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      will-change: width;
+    }
+
+    .navButton a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      width: 100%;
+      height: 100%;
+      padding-left: 6px;
+      color: inherit;
+    }
+
+    .navButton .material-icons {
+      font-size: 24px;
+      transition: color 0.3s ease;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .navButton .buttonLabel {
+      white-space: nowrap;
+      color: #fff;
+      font-size: 0.9rem;
+      opacity: 0;
+      width: 0;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .navButton:nth-child(1):hover .material-icons {
+      color: #00d4ff;
+    }
+
+    .navButton:nth-child(2):hover .material-icons {
+      color: #ff6ec7;
+    }
+
+    .navButton:nth-child(3):hover .material-icons {
+      color: #f95e5e;
+    }
+
+    .navButton:nth-child(4):hover .material-icons {
+      color: #ffae00;
+    }
+
+    .navButton:nth-child(5):hover .material-icons {
+      color: #9d7dff;
+    }
+
+    .navButton:hover {
+      width: 160px;
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .navButton:hover .buttonLabel {
+      opacity: 1;
+      width: auto;
+      margin-left: 0.3rem;
+    }
+
+    #middleBlock {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+
+    #middleBlock.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="glassContainer" id="middleBlock">
+    <h1 class="titleText" id="midTitle"></h1>
+    <p class="bodyText" id="midBody"></p>
+  </div>
+
+  <div class="glassContainer">
+    <div class="helloText" id="helloText">Hello, I'm</div>
+    <h1 class="titleText">mesmerica</h1>
+    <p class="bodyText">
+      a rainrotted 16 year old<br>
+      yes i know this website is coded poorly<br>
+      but it doesn't use any framework or node<br>
+      so that's a win in my books
+    </p>
+  </div>
+
+  <div class="buttonContainer" id="buttonContainer">
+    <div class="navButton">
+      <a href="https://github.com/mesmerica?tab=repositories" target="_blank">
+        <span class="material-icons">info</span>
+        <span class="buttonLabel">My Projects</span>
+      </a>
+    </div>
+    <div class="navButton" onclick="showContent('About Me', 'Self-taught 16 year old dev (5+ years of experience) across multiple technologies. I love tinkering with stuff I\'m not supposed to and gaming.')">
+      <a href="javascript:void(0)">
+        <span class="material-icons">account_circle</span>
+        <span class="buttonLabel">About Me</span>
+      </a>
+    </div>
+    <div class="navButton" onclick="showContent('My Interests', 'Yapping, cats, coding (more a thing I do rarely when I\'m bored), gaming, YouTube, watching stuff like The Simpsons, Family Guy, etc.')">
+      <a href="javascript:void(0)">
+        <span class="material-icons">favorite</span>
+        <span class="buttonLabel">My Interests</span>
+      </a>
+    </div>
+    <div class="navButton" onclick="showContent('Contact Me', 'GitHub: <a href=\'https://github.com/mesmerica\' target=\'_blank\'>https://github.com/mesmerica</a><br>Discord: @mesmerica<br>Email: luciddreaming69420@gmail.com')">
+      <a href="javascript:void(0)">
+        <span class="material-icons">mail</span>
+        <span class="buttonLabel">Contact Me</span>
+      </a>
+    </div>
+    <div class="navButton">
+      <a href="https://example.com" target="_blank">
+        <span class="material-icons">folder_open</span>
+        <span class="buttonLabel">Source</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const helloText = document.getElementById('helloText')
+    const phrases = [
+      "Hello, I'm",
+      "Hola, soy",
+      "Hi there, I'm",
+      "Hey, it's",
+      "Bonjour, je suis",
+      "Ciao, sono",
+      "Hallo, ich bin"
+    ]
+    let currentIndex = 0
+    setInterval(() => {
+      helloText.style.opacity = '0'
+      helloText.style.transform = 'translateY(-10px)'
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % phrases.length
+        helloText.textContent = phrases[currentIndex]
+        helloText.style.opacity = '1'
+        helloText.style.transform = 'translateY(0)'
+      }, 300)
+    }, 6000)
+
+    function showContent(title, body) {
+      const block = document.getElementById('middleBlock')
+      const midTitle = document.getElementById('midTitle')
+      const midBody = document.getElementById('midBody')
+      midTitle.textContent = title
+      midBody.innerHTML = body
+      if (!block.classList.contains('visible')) {
+        block.classList.add('visible')
+      }
+    }
+  </script>
+</body>
+</html>
